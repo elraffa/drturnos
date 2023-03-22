@@ -25,4 +25,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::post('/patients', [App\Http\Controllers\PatientController::class, 'store'])->name('patients.store');
 });
+
