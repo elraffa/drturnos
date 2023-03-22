@@ -21,6 +21,8 @@
                             </div>
                             <div class="mt-5 md:col-span-2 md:mt-0">
                             <form action="{{ route('patients.store') }}" method="POST">
+                            @csrf
+
                                 <div class="overflow-hidden shadow sm:rounded-md">
                                 <div class="bg-white px-4 py-5 sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
@@ -87,7 +89,7 @@
                             </form>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
