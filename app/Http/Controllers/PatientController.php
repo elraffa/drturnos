@@ -38,11 +38,16 @@ class PatientController extends Controller
     {
             $validatedData = $request->validate([
                 'name' => 'required',
+                'last_name' => 'required',
                 'email' => 'required|email|unique:patients',
                 'phone_number' => 'required',
-                'address' => 'required',
-                'ssn' => 'required|unique:patients',
-                'medical_insurance_number' => 'required|unique:patients',
+                'street_address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'postal_code' => 'required',
+                'dni' => 'required|unique:patients',
+                'insurance_name' => 'required',
+                'insurance_number' => 'required|unique:patients',
             ]);
 
             $patient = Patient::create($validatedData);

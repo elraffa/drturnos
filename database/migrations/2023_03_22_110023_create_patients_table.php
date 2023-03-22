@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone_number');
-            $table->text('address');
+            $table->text('street_address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('postal_code');
             $table->string('dni')->unique();
-            $table->string('insurance')->unique();
+            $table->string('insurance_name');
+            $table->string('insurance_number')->unique();
             $table->timestamps();
         });
     }
