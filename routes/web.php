@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/patients', function () {
-        return view('welcome');
+        return view('patients');
     })->name('patients');
-    Route::post('/patients', function () {
-        return view('welcome');
-    })->name('patients.store');
+    
+    Route::get('/patients/create', [App\Http\Controllers\PatientController::class, 'create']);
+    
+    Route::post('/patients', [App\Http\Controllers\PatientController::class, 'store'])->name('patients-submit');
 });
+
+
 

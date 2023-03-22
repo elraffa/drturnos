@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Pacientes') }}
         </h2>
     </x-slot>
 
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6">
-                <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Bienvenido</h1>
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Area de Pacientes</h1>
                 <hr class="mt-2 mb-6">
                     <div class="mt-10 sm:mt-0">
                         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -21,14 +21,14 @@
                             </div>
                             <div class="mt-5 md:col-span-2 md:mt-0">
 
-                            <form action="/patients" method="POST">
+                            <form action="{{ route('patients-submit') }}" method="POST">
                             @csrf
 
                                 <div class="overflow-hidden shadow sm:rounded-md">
                                 <div class="bg-white px-4 py-5 sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
                                     <div class="col-span-6 sm:col-span-3">
-                                        <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
                                         <input type="text" name="name" id="first-name" autocomplete="given-name" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                     </div>
 
@@ -78,8 +78,8 @@
                                     </div>
 
                                     <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                        <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
-                                        <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        <label for="postal_code" class="block text-sm font-medium leading-6 text-gray-900">Código Postal</label>
+                                        <input type="text" name="postal_code" id="postal_code" autocomplete="postal_code" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                     </div>
                                     </div>
                                 </div>

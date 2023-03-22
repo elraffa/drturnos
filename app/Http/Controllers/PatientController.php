@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use Illuminate\Http\Request;
 use App\Models\Patient;
 
 class PatientController extends Controller
@@ -25,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('patient-create');
     }
 
     /**
@@ -34,8 +35,10 @@ class PatientController extends Controller
      * @param  \App\Http\Requests\StorePatientRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePatientRequest $request)
+    public function store( Request $request)
+    
     {
+           
             $validatedData = $request->validate([
                 'name' => 'required',
                 'last_name' => 'required',
@@ -50,9 +53,10 @@ class PatientController extends Controller
                 'insurance_number' => 'required|unique:patients',
             ]);
 
-            $patient = Patient::create($validatedData);
+            Patient::create($validatedData);
 
-            return redirect()->route('patients.show', $patient);
+            return redirect()->route('patients')
+                     ->with('success', 'Patient added successfully.');
     }
 
     /**
