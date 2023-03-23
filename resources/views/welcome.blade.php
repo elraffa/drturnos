@@ -23,7 +23,7 @@
     <body class="antialiased">
         <div class="relative flex flex-col justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <div class="max-w-6xl text-center mx-auto sm:px-6 lg:px-8">
-                <h1 class="text-6xl">
+                <h1 class="lg:text-4xl">
                 MedTurnos
                 </h1>
                 <h3>Conecta con tus pacientes</h3>

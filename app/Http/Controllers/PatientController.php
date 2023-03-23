@@ -26,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patient-create');
+        return view('pages.patients.patient-create');
     }
 
     /**

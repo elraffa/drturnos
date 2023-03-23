@@ -27,12 +27,16 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/patients', function () {
-        return view('patients');
+        return view('pages.patients.patients');
     })->name('patients');
     
-    Route::get('/patients/create', [App\Http\Controllers\PatientController::class, 'create']);
+    Route::get('/patients/create', [App\Http\Controllers\PatientController::class, 'create'])->name('patients.create');
     
     Route::post('/patients', [App\Http\Controllers\PatientController::class, 'store'])->name('patients-submit');
+
+    Route::get('/calendar', function () {
+        return view('pages.calendar');
+    })->name('calendar');
 });
 
 
