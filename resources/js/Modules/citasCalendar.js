@@ -3,6 +3,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
+import esLocale from '@fullcalendar/core/locales/es';
+
 
 
 export default class citasCalendar {
@@ -21,11 +23,11 @@ export default class citasCalendar {
             headerToolbar: { center: 'dayGridMonth,timeGridWeek' }, // buttons for switching between views
             plugins: [ dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin ],
             initialView: 'dayGridMonth',
+            locale: esLocale,
             selectable: true,
             events: 
                 citasEvents, 
         });
-        calendar.setOption('locale', 'es');
         calendar.render();
     }
  }

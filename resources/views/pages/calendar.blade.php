@@ -21,7 +21,9 @@
 
     @push('scripts');
     <script>    
+
         var citasEvents = @json($events);
+
     </script>
     @endpush
    
