@@ -14,9 +14,20 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $searchTerm = $request->input('search');
+        
+        $patients = Patient::all();
+
+        if ($searchTerm) {
+            $patients = Patient::query()
+            ->where('name', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('email', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('last_name', 'LIKE', "%{$searchTerm}%")
+            ->get();
+     }
+        return view('pages.patients.patients', compact('patients'));
     }
 
     /**
@@ -55,8 +66,8 @@ class PatientController extends Controller
 
             Patient::create($validatedData);
 
-            return redirect()->route('patients')
-                     ->with('success', 'Patient added successfully.');
+            return redirect('patients')->with('success', 'Paciente agregado con éxito.');
+
     }
 
     /**
@@ -70,6 +81,7 @@ class PatientController extends Controller
         //
     }
 
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -78,7 +90,10 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+
+        $patient = Patient::findOrFail($patient->id);
+
+        return view('pages.patients.patient-edit', compact('patient'));
     }
 
     /**
@@ -90,7 +105,23 @@ class PatientController extends Controller
      */
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        //
+        $patient = Patient::findOrFail($patient->id);
+
+        $patient->name = $request->input('name');
+        $patient->last_name = $request->input('last_name');
+        $patient->email = $request->input('email');
+        $patient->phone_number = $request->input('phone_number');
+        $patient->dni = $request->input('dni');
+        $patient->street_address = $request->input('street_address');
+        $patient->city = $request->input('city');
+        $patient->state = $request->input('state');
+        $patient->postal_code = $request->input('postal_code');
+        $patient->insurance_name = $request->input('insurance_name');
+        $patient->insurance_number = $request->input('insurance_number');
+
+        $patient->save();
+
+        return redirect()->route('patients.index')->with('success', 'Paciente actualizado con éxito.');
     }
 
     /**
@@ -101,6 +132,8 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+
+        return redirect()->route('patients.index');
     }
 }

@@ -11,7 +11,9 @@ export default class citasCalendar {
     constructor () {
         this.calendarEl = document.getElementById('calendar');
 
-        this.events();
+        if (this.calendarEl) {
+            this.events();
+        }
     }
 
     events() {
@@ -25,9 +27,11 @@ export default class citasCalendar {
             initialView: 'dayGridMonth',
             locale: esLocale,
             selectable: true,
-            events: 
-                citasEvents, 
+            displayEventTime: true,
+            editable: true,
+            events: citasEvents, // citasEvents is a global variable defined in the blade view
         });
+
         calendar.render();
     }
  }

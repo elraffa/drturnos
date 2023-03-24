@@ -17,7 +17,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             EventSeeder::class,
+            PatientSeeder::class,
         ]);
+
+
         
         // \App\Models\User::factory(10)->create();
 
@@ -25,5 +28,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // \App\Models\Patient::factory(10)->create();
     }
 }
