@@ -1,6 +1,8 @@
 {
     "Log in": "Acceder",
     "Remember me": "Recuérdame",
+    "Whoops! Something went wrong.": "¡Ups! Algo ha ido mal.",
+    "View": "Ver",
     "Forgot your password?": "¿Olvidaste tu contraseña?",
     "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "¿Olvidaste tu contraseña? No hay problema. Simplemente dinos tu dirección de correo electrónico y te enviaremos un enlace para restablecer la contraseña que te permitirá elegir una nueva.",
     "Email password reset link": "Enviar enlace para restablecer contraseña",
@@ -72,5 +74,8 @@
     "Manage Team": "Administrar equipo",
     "All Patients": "Todos los pacientes",
     "Edit": "Editar",
-    "Delete": "Eliminar"
+    "Delete": "Eliminar",
+    "Confirm Deletion": "Confirmar Eliminación",
+    "Are you sure you want to delete ? Once a patient is deleted, all of its resources and data will be permanently deleted.": "¿Estás seguro de que quieres eliminar este paciente? Una vez eliminado, todos sus recursos y datos se eliminarán permanentemente.",
+    "Are you sure you want to delete this team? Once a team is deleted, all of its resources and data will be permanently deleted.": "¿Estás seguro de que quieres eliminar este equipo? Una vez eliminado, todos sus recursos y datos se eliminarán permanentemente."
 }

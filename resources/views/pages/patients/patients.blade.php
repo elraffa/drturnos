@@ -44,41 +44,37 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $patient->name }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $patient->last_name }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $patient->email }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
                                 <td>
                                     <div class="flex gap-4 items-center justify-center">
+                                        <a href="{{ route('patients.edit', $patient) }}" class="text-white px-8 py-2 rounded-md bg-green-600 hover:bg-green-900">{{__('View')}}</a>
                                         <a href="{{ route('patients.edit', $patient) }}" class="text-white px-8 py-2 rounded-md bg-indigo-600 hover:bg-indigo-900">{{__('Edit')}}</a>
-                                    <button type="button" class="text-white px-8 py-2 rounded-md bg-red-600 hover:bg-red-900" data-toggle="modal" data-target="#confirm-delete-{{ $patient->id }}">{{__('Delete')}}</button>
-                                    <!-- Modal 
-                                    <div class="modal fixed z-10 inset-0 overflow-y-auto" id="confirm-delete-{{ $patient->id }}">
+                                    <button type="button" class="js-modal-button text-white px-8 py-2 rounded-md bg-red-600 hover:bg-red-900" data-toggle="modal" data-target="#confirm-delete-{{ $patient->id }}">{{__('Delete')}}</button>
+                                    <!--  Modal -->
+                                    <div class="modal hidden fixed z-10 inset-0 overflow-y-auto" id="confirm-delete-{{ $patient->id }}">
                                         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
                                         <div class="modal-container w-3/4 fixed top-0 left-0 right-0 mx-auto my-10">
                                             <div class="bg-white rounded shadow-lg p-8">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title font-bold text-lg mb-4">Confirm Deletion</h4>
-                                                        <button type="button" class="close text-gray-500 hover:text-gray-900" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                        <h4 class="modal-title font-bold text-lg mb-4">{{__('Confirm Deletion')}}</h4>        
                                                     </div>
                                                     <div class="modal-body text-gray-700 mb-4">
-                                                        Are you sure you want to delete {{ $patient->name }}?
+                                                   Está seguro de que quiere eliminar a {{ $patient->name }} {{ $patient->last_name }}? Esta acción no se puede deshacer.
                                                     </div>
                                                     <div class="modal-footer flex justify-end">
-                                                        <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="js-modal-cancel bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" data-dismiss="modal">{{__('Cancel')}}</button>
                                                         <form action="{{ route('patients.destroy', $patient) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</button>
+                                                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('Delete')}}</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     </div>  
-                                </td>   
-                                </td>
+                                 </td>   
                                 </tr>
                                 @endforeach
                             </tbody>

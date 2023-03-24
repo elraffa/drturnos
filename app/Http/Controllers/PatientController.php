@@ -54,19 +54,37 @@ class PatientController extends Controller
                 'name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required|email|unique:patients',
-                'phone_number' => 'required',
+                'phone_number' => 'required|unique:patients',
                 'street_address' => 'required',
                 'city' => 'required',
                 'state' => 'required',
                 'postal_code' => 'required',
                 'dni' => 'required|unique:patients',
                 'insurance_name' => 'required',
-                'insurance_number' => 'required|unique:patients',
-            ]);
+                'insurance_number' => 'required|unique:patients'
+            ], [
+                'name.required' => 'El nombre es requerido',
+                'last_name.required' => 'El apellido es requerido',
+                'email.required' => 'El email es requerido',
+                'email.email' => 'El email debe ser válido',
+                'email.unique' => 'El email ya está en uso',
+                'phone_number.required' => 'El número de teléfono es requerido',
+                'phone_number.unique' => 'El número de teléfono ya está en uso',
+                'street_address.required' => 'La dirección es requerida',
+                'city.required' => 'La ciudad es requerida',
+                'state.required' => 'El estado es requerido',
+                'postal_code.required' => 'El código postal es requerido',
+                'dni.required' => 'El DNI es requerido',
+                'dni.unique' => 'El DNI ya está en uso',
+                'insurance_name.required' => 'El nombre de la obra social es requerido',
+                'insurance_number.required' => 'El número de la obra social es requerido',
+                'insurance_number.unique' => 'El número de la obra social ya está en uso'
+            ]
+                );
 
             Patient::create($validatedData);
 
-            return redirect('patients')->with('success', 'Paciente agregado con éxito.');
+            return redirect()->route('patients.index')->with('success', 'Paciente agregado con éxito.');
 
     }
 

@@ -24,8 +24,6 @@
                             <form action="{{ route('patients.update', $patient->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                           <!-- Add this line to override the HTTP method  @method('PUT')  -->
-
 
                                 <div class="overflow-hidden shadow sm:rounded-md">
                                 <div class="bg-white px-4 py-5 sm:p-6">
@@ -90,6 +88,9 @@
                                     <button type="submit" class="inline-flex justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Guardar</button>
                                 </div>
                                 </div>
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </form>
                             </div>
                         </div>
