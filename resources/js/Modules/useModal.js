@@ -7,10 +7,6 @@ export default class useModal {
         this.modalCancel = document.querySelectorAll('.js-modal-cancel');
         this.cancelValues = Array.from(this.modalCancel);
 
-        console.log(this.buttonValues);
-        console.log(this.modal);
-        console.log(this.modalValues);
-
         this.events();
     }
 

@@ -1,7 +1,7 @@
 
 <x-app-layout>
 @if (session('success'))
-    <div class="w-full text-white p-6 bg-green-700">
+    <div class="js-success-message w-full text-white p-6 bg-green-700">
         {{ session('success') }}
     </div>
 @endif
