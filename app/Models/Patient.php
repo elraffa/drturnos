@@ -23,6 +23,7 @@ class Patient extends Model
         'dni',
         'insurance_name',
         'insurance_number',
+        'is_guest'
     ];
 
 }

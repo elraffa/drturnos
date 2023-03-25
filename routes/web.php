@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PatientRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,10 @@ Route::middleware([
     Route::get('/calendar', [EventController::class, 'index'])->name('calendar');
 
 });
+
+// Patient registration
+Route::get('/patient-register', [PatientRegistrationController::class, 'create' ])->name('patient-register');
+Route::post('/patient-register', [PatientRegistrationController::class, 'store' ])->name('patient.register.store');
 
 
 

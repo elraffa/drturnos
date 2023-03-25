@@ -80,8 +80,8 @@ class PatientController extends Controller
                 'insurance_number.required' => 'El número de la obra social es requerido',
                 'insurance_number.unique' => 'El número de la obra social ya está en uso'
             ]
-                );
-
+            );
+        
             Patient::create($validatedData);
 
             return redirect()->route('patients.index')->with('success', 'Paciente agregado con éxito.');
