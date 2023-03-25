@@ -3,6 +3,7 @@
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PatientRegistrationController;
+use App\Http\Controllers\GuestRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,9 +50,13 @@ Route::middleware([
 
 });
 
-// Patient registration
-Route::get('/patient-register', [PatientRegistrationController::class, 'create' ])->name('patient-register');
-Route::post('/patient-register', [PatientRegistrationController::class, 'store' ])->name('patient.register.store');
+// Guest Registration
+Route::get('/guest/guest-register', [GuestRegistrationController::class, 'index'])->name('guest.register');
+Route::post('/guest/guest-register', [GuestRegistrationController::class, 'store'])->name('guest.register.store');
+Route::get('/guest/guest-success', function () {
+    return view('/guest/guest-success');
+})->name('guest.success');
+
 
 
 

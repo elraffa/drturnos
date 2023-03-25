@@ -15,7 +15,7 @@
                             </div>
                             <div class="mt-5 md:col-span-2 md:mt-0">
 
-                            <form action="{{ route('patient.register.store') }}" method="POST">
+                            <form action="{{ route('guest.register.store') }}" method="POST">
                             @csrf
 
                                 <div class="overflow-hidden shadow sm:rounded-md">
