@@ -26,4 +26,9 @@ class Patient extends Model
         'is_guest'
     ];
 
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class);
+    }
+
 }

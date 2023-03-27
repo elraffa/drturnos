@@ -6,6 +6,7 @@ use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use App\Models\Doctor;
 
 class PatientController extends Controller
 {
@@ -81,7 +82,12 @@ class PatientController extends Controller
                 'insurance_number.unique' => 'El número de la obra social ya está en uso'
             ]
             );
-        
+
+            $doctor = Doctor::find(1);
+            $patient = Patient::find(1);
+
+            //$patient->doctors()->attach($doctor->id);
+
             Patient::create($validatedData);
 
             return redirect()->route('patients.index')->with('success', 'Paciente agregado con éxito.');
