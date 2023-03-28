@@ -26,27 +26,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
-
-        Gate::define('admin', function ($user) {
-            return $user->hasRole('admin');
-        });
-    
-        $permissions = [
-            'create patient',
-            'view patient',
-            'edit patient',
-            'delete patient',
-            'create appointment',
-            'view appointment',
-            'edit appointment',
-            'delete appointment',
-        ];
-    
-        // foreach ($permissions as $permission) {
-        //     Permission::create(['name' => $permission]);
-        // }
-    
-        // $admin = Role::create(['name' => 'admin']);
-        // $admin->givePermissionTo(Permission::all());
     }
 }

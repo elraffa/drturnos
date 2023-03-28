@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Doctor;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Patient>
@@ -28,6 +30,7 @@ class PatientFactory extends Factory
             'dni' => $this->faker->unique()->randomNumber(8),
             'insurance_name' => $this->faker->company(),
             'insurance_number' => $this->faker->unique()->randomNumber(8),
+            'is_guest' => $this->faker->boolean(),
         ];
     }
 }
