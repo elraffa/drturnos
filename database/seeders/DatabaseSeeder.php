@@ -34,6 +34,11 @@ class DatabaseSeeder extends Seeder
             $events = Event::factory(3)->create(['doctor_id' => $doctor->id]);;
         });
 
+        $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
+        ]);
+
         // $this->call([
         //    // EventSeeder::class,
         //     PatientSeeder::class,

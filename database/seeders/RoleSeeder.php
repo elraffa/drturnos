@@ -23,6 +23,6 @@ class RoleSeeder extends Seeder
         //$rolePatient = Role::create(['name' => 'patient']); 
 
 
-        Permission::create(['name' => 'create patient'])->assignRole($roleAdmin, $roleEditor);
+        Permission::create(['name' => 'create patient'])->syncRoles([$roleAdmin, $roleEditor]);
     }
 }
