@@ -26,7 +26,8 @@ class EventController extends Controller
            ];
         }
 
-        return view('pages.calendar', compact('events'));
+        //return view('pages.calendar', compact('events'));
+        return view('pages.events.events', compact('events'));
     }
 
     /**

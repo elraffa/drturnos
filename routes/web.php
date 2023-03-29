@@ -39,14 +39,29 @@ Route::middleware([
     // Store patient
     Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
 
+    //Edit Patient
     Route::get('/patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
-    
+
+    //Update Patient    
     Route::put('/patients/{patient}', [PatientController::class, 'update'])->name('patients.update');
-    
+
+    //Delete Patient    
     Route::delete('/patients/{patient}', [PatientController::class, 'destroy'])->name('patients.destroy');
     
     // Get Calendar
     Route::get('/calendar', [EventController::class, 'index'])->name('calendar');
+
+    // Get Events
+    Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+    // Create Event
+    Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+
+    // Store Event
+    Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+    //Edit Event
+    Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
 
 });
 
