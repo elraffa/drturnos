@@ -9,6 +9,11 @@ use App\Models\Patient;
 ?>
 
 <x-app-layout>
+    @if (session('success'))
+        <div class="js-success-message w-full text-white p-6 bg-green-700">
+            {{ session('success') }}
+        </div>
+    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Calendar') }}
@@ -41,7 +46,7 @@ use App\Models\Patient;
                                                     <label for="doctor" class="block text-sm font-medium leading-6 text-gray-900">Médico</label>
                                                     <select name="doctor_id" id="doctor_id" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     @foreach ($doctors as $doctor)
-                                                        <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                                                        <option value="{{ $doctor->id }}">{{ $doctor->name }} {{ $doctor->last_name }}</option>
                                                     @endforeach
                                                     </select>
                                                 </div>
@@ -50,23 +55,34 @@ use App\Models\Patient;
                                                     <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">Paciente</label>
                                                     <select name="patient_id" id="patient_id" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     @foreach ($patients as $patient)
-                                                        <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                                                        <option value="{{ $patient->id }}">{{ $patient->name}} {{$patient->last_name }}</option>
                                                     @endforeach
                                                     </select>
                                                 </div>
 
                                                 <div class="col-span-6 sm:col-span-3">
                                                     <div>
-                                                        <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Fecha:</label>
-                                                        <input type="date" name="date" id="date" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        <label for="start_date" class="block text-sm font-medium leading-6 text-gray-900">Fecha y hora inicio:</label>
+                                                        <input 
+                                                            type="datetime-local" 
+                                                            id="start_date"
+                                                            name="start_date" 
+                                                            min="{{ now()->format('Y-m-d\TH:i') }}" 
+                                                            hour-range="9-17"
+                                                            class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-span-6 sm:col-span-3">
 
                                                     <div>
-                                                        <label for="time" class="block text-sm font-medium leading-6 text-gray-900">Hora:</label>
-                                                        <input type="time" name="time" id="time" class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                        <label for="end_date" class="block text-sm font-medium leading-6 text-gray-900">Fecha y Hora de finalización:</label>
+                                                        <input 
+                                                            type="datetime-local" 
+                                                            id="end_date"
+                                                            name="end_date"           
+                                                            hour-range="9-17"
+                                                            class="mt-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
 
 

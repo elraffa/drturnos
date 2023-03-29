@@ -10,6 +10,10 @@ import esLocale from '@fullcalendar/core/locales/es';
 export default class citasCalendar {
     constructor () {
         this.calendarEl = document.getElementById('calendar');
+        this.start_date = document.getElementById('start_date');
+        this.end_date = document.getElementById('end_date');
+
+        console.log(this.start_date);
 
         if (this.calendarEl) {
             this.events();
@@ -18,6 +22,7 @@ export default class citasCalendar {
 
     events() {
         this.renderCalendar();
+        this.setEndDate();
     }
 
     renderCalendar() {
@@ -33,5 +38,11 @@ export default class citasCalendar {
         });
 
         calendar.render();
+    }
+
+    setEndDate() {
+        this.start_date.addEventListener('change', () => {
+            this.end_date.value = this.start_date.value;
+        });
     }
  }

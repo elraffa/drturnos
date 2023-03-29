@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Doctor;
+use App\Models\Patient;
 
 class EventController extends Controller
 {
@@ -50,7 +52,17 @@ class EventController extends Controller
     
     {
            
-           //
+        $event = new Event;
+        $doctor = Doctor::find($request->doctor_id);
+        $patient = Patient::find($request->patient_id);
+        $event->event = "Cita de " . $patient->last_name . " con el Dr. " . $doctor->last_name;
+        $event->patient_id = $request->patient_id;
+        $event->doctor_id = $request->doctor_id;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->save();
+
+        return redirect()->route('events.index')->with('success', 'El turno fue agregado con exito. Puede revisarlo en el calendario');
     }
 
     /**
