@@ -13,8 +13,6 @@ export default class citasCalendar {
         this.start_date = document.getElementById('start_date');
         this.end_date = document.getElementById('end_date');
 
-        console.log(this.start_date);
-
         if (this.calendarEl) {
             this.events();
         }
