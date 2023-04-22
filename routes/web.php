@@ -62,7 +62,7 @@ Route::middleware([
 
     //Edit Event
     Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
-
+    
 });
 
 // Guest Registration
@@ -71,6 +71,13 @@ Route::post('/guest/guest-register', [GuestRegistrationController::class, 'store
 Route::get('/guest/guest-success', function () {
     return view('/guest/guest-success');
 })->name('guest.success');
+
+// Check Guest Events
+Route::get('/events/check-guest-events', [EventController::class, 'checkGuestEvents']);
+Route::post('/events/check-guest-events', [EventController::class, 'checkGuestEvents']);
+
+//Check Doctor Availability
+Route::post('/events/check-doctor-availability', [EventController::class, 'checkDoctorAvailability']);
 
 
 

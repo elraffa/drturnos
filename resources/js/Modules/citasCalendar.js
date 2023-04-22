@@ -5,8 +5,6 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 
-
-
 export default class citasCalendar {
     constructor () {
         this.calendarEl = document.getElementById('calendar');

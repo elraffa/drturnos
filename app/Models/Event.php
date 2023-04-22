@@ -26,4 +26,17 @@ class Event extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+
+    public function scopeBetween($query, $start, $end)
+    {
+        return $query->where('start_date', '>=', $start)
+            ->where('end_date', '<=', $end);
+    }
+
+    public static function isDoctorBookedBetween($start, $end, $doctorId)
+    {
+        return static::where('doctor_id', $doctorId)
+            ->between($start, $end)
+            ->exists();
+    }
 }

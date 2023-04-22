@@ -32,6 +32,39 @@ class EventController extends Controller
         return view('pages.events.events', compact('events'));
     }
 
+    public function checkGuestEvents (Request $request)
+    {
+        $doctorId = $request->input('doctorId');
+        $events = Event::where('doctor_id', $doctorId)->get();
+        
+        return response()->json($events);
+    }
+
+    // Check Doctor Availability 
+    
+    public function isDoctorBookedBetween($doctorId, $startDateTime, $endDateTime)
+    {
+        $events = Event::where('doctor_id', $doctorId)
+                    ->whereBetween('start_date', [$startDateTime, $endDateTime])
+                    ->orWhereBetween('end_date', [$startDateTime, $endDateTime])
+                    ->get();
+
+        return $events->count() > 0;
+    }
+
+    public function checkDoctorAvailability(Request $request)
+        {
+        $doctorId = $request->input('doctor_id');
+        $startDateTime = $request->input('start_date') . ' ' . $request->input('start_time');
+        $endDateTime = $request->input('end_date') . ' ' . $request->input('end_time');
+
+        $isAvailable = !Event::isDoctorBookedBetween($doctorId, $startDateTime, $endDateTime);
+
+        return response()->json([
+            'is_available' => $isAvailable
+        ]);
+        }
+
     /**
      * Show the form for creating a new resource.
      *

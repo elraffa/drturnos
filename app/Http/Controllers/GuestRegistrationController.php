@@ -17,10 +17,15 @@ class GuestRegistrationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_events = Event::all();
+        // Find the doctor from the request input 
+        $doctor = Doctor::find($request->input('doctor_id'));
+        dump($doctor);
 
+        // Function to get allevents from doctor
+        $all_events = Event::where('doctor_id', $request->input('doctor_id'))->get();
+        dump($all_events);
         $events = [];
 
         foreach ($all_events as $event) {
