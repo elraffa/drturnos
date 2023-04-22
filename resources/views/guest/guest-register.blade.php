@@ -197,13 +197,4 @@ use App\Models\Patient;
         </div>
     </div>
 
-
-    @push('scripts');
-    <script>    
-
-        var citasEvents = @json($events);
-
-    </script>
-    @endpush
-
 </x-guest-layout>
