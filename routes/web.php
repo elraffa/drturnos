@@ -73,7 +73,7 @@ Route::get('/guest/guest-success', function () {
 })->name('guest.success');
 
 // Check Guest Events
-Route::get('/events/check-guest-events', [EventController::class, 'checkGuestEvents']);
+Route::get('/events/check-guest-events', [EventController::class, 'getAvailableDates']);
 Route::post('/events/check-guest-events', [EventController::class, 'checkGuestEvents']);
 
 //Check Doctor Availability

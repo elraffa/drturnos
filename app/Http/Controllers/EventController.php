@@ -28,7 +28,6 @@ class EventController extends Controller
            ];
         }
 
-        //return view('pages.calendar', compact('events'));
         return view('pages.events.events', compact('events'));
     }
 
@@ -40,7 +39,33 @@ class EventController extends Controller
         return response()->json($events);
     }
 
-    // Check Doctor Availability 
+    /**
+     * Display a listing of available dates.
+     */
+    public function getAvailableDates() 
+    {
+        $availableDates = [
+            ['start_date' => '2023-04-22', 'end_date' => '2023-04-22'],
+            ['start_date' => '2023-04-23', 'end_date' => '2023-04-23'],
+            ['start_date' => '2023-04-24', 'end_date' => '2023-04-24'],
+            ['start_date' => '2023-04-25', 'end_date' => '2023-04-25'],
+        ]; // Replace this with your array of available dates
+    
+        $events = [];
+    
+        foreach ($availableDates as $date) {
+            $events[] = [
+                'title' => 'Available',
+                'start_date' => $date['start_date'],
+                'end_date' => $date['end_date'],
+                'color' => '#00FF00', // Set the color of the event to green
+            ];
+        }
+   
+        return response()->json($events);
+    }
+
+    // Check Doctor Availability (we are not using these two methods in this project right now)
     
     public function isDoctorBookedBetween($doctorId, $startDateTime, $endDateTime)
     {
@@ -55,8 +80,8 @@ class EventController extends Controller
     public function checkDoctorAvailability(Request $request)
         {
         $doctorId = $request->input('doctor_id');
-        $startDateTime = $request->input('start_date') . ' ' . $request->input('start_time');
-        $endDateTime = $request->input('end_date') . ' ' . $request->input('end_time');
+        $startDateTime = $request->input('start_date');
+        $endDateTime = $request->input('end_date');
 
         $isAvailable = !Event::isDoctorBookedBetween($doctorId, $startDateTime, $endDateTime);
 
