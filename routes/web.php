@@ -4,6 +4,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PatientRegistrationController;
 use App\Http\Controllers\GuestRegistrationController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,6 +79,11 @@ Route::post('/events/check-guest-events', [EventController::class, 'checkGuestEv
 
 //Check Doctor Availability
 Route::post('/events/check-doctor-availability', [EventController::class, 'checkDoctorAvailability']);
+
+// Doctors page
+Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
+Route::get('/doctors/{id}', [DoctorController::class, 'show'])->name('doctors.show');
+
 
 
 
