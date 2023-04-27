@@ -13,6 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body>
         <livewire:guest-nav />
@@ -22,6 +23,7 @@
         </div>
 
         @stack('scripts')
+        @livewireScripts
 
     </body>
 </html>
