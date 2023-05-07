@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone_number');
             $table->string('specialty');
+            $table->json('availability')->nullable();
             $table->timestamps();
         });
     }

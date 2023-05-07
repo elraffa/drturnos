@@ -25,5 +25,16 @@ class DoctorController extends Controller
     
         return view('doctors.show', compact('doctor'));
     }
+
+    public function updateAvailability(Request $request)
+    {
+        $doctor = Doctor::findOrFail($request->doctor_id);
+
+        $availability = $request->input('availability');
+
+        $doctor->setAvailability($availability);
+
+        return view('patients.patient-edit', ['doctor' => $doctor]);
+    }
     
 }

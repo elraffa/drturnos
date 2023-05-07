@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('availabilities', function (Blueprint $table) {
             $table->id();
-            $table->date('availability_date');
+            $table->string('day');
             $table->time('start_time');
             $table->time('end_time');
             $table->boolean('is_available')->default(true);

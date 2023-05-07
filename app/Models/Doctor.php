@@ -24,4 +24,10 @@ class Doctor extends Model
     {
         return $this->belongsToMany(Patient::class);
     }
+
+    public function setAvailability($availability)
+    {
+        $this->availability = $availability;
+        $this->save();
+    }
 }
