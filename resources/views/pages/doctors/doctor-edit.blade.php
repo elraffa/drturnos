@@ -1,6 +1,6 @@
 <x-app-layout>
 
-<form method="POST" action="{{ route('doctor.availability.update') }}">
+<form method="POST" action="{{ route('doctor.edit', $doctor->id) }}">
     @csrf
     @method('PUT')
 

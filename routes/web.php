@@ -64,6 +64,9 @@ Route::middleware([
     //Edit Event
     Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
 
+     //Edit Doctor
+     Route::get('/doctors/{id}/doctor-edit', [DoctorController::class, 'updateAvailability'])->name('doctor.edit');
+
 });
 
 // Guest Registration
@@ -84,8 +87,6 @@ Route::post('/events/check-doctor-availability', [EventController::class, 'check
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/doctors/{id}', [DoctorController::class, 'show'])->name('doctors.show');
 
-// Private doctor profile (move to private routes)
-Route::get('/doctors/{id}/doctor-edit', [DoctorController::class, 'updateAvailability'])->name('doctor.edit');
 
 
 
