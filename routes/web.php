@@ -66,7 +66,8 @@ Route::middleware([
 
      //Edit Doctor
      Route::get('/doctors/{id}/doctor-edit', [DoctorController::class, 'updateAvailability'])->name('doctor.edit');
-
+     Route::post('/doctors/{id}/doctor-edit', [DoctorController::class, 'saveAvailability'])->name('doctor.edit');
+     
 });
 
 // Guest Registration
