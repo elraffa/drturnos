@@ -15,15 +15,16 @@ return new class extends Migration
     {
         Schema::create('availabilities', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
             $table->time('start_time');
             $table->time('end_time');
+            $table->unsignedBigInteger('day_id');
             $table->boolean('is_available')->default(true);
             $table->unsignedBigInteger('doctor_id');
             $table->timestamps();
             
             // Define foreign key relationship with doctors table
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+            $table->foreign('day_id')->references('id')->on('days_of_week')->onDelete('cascade');
         });
     }
 
